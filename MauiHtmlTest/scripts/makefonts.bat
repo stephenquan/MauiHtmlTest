@@ -1,0 +1,3 @@
+setlocal
+
+wsl ./makefonts.sh
