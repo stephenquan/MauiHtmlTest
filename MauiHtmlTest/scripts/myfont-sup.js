@@ -12,16 +12,6 @@ module.exports = {
         }
     },
     codepoints: {
-        'c048' : 48,
-        'c049' : 49,
-        'c050' : 50,
-        'c051' : 51,
-        'c052' : 52,
-        'c053' : 53,
-        'c054' : 54,
-        'c055' : 55,
-        'c056' : 56,
-        'c057' : 57,
     },
     getIconId: ({
         basename, // `string` - Example: 'foo';
@@ -33,3 +23,7 @@ module.exports = {
         return basename;
     }
 };
+
+for (let i = 0x20; i <= 0x3f; i++)
+    module.exports.codepoints[ `c${i.toString(16)}` ] = i;
+
