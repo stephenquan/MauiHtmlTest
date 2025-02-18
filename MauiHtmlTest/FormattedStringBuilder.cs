@@ -80,13 +80,20 @@ public class FormattedStringBuilder
                     supCount++;
                     break;
                 case "b":
+                case "strong":
                     span.FontAttributes = FontAttributes.Bold;
                     break;
                 case "i":
+                case "em":
                     span.FontAttributes = FontAttributes.Italic;
                     break;
                 case "u":
                     span.TextDecorations = TextDecorations.Underline;
+                    break;
+                case "s":
+                case "del":
+                case "strike":
+                    span.TextDecorations = TextDecorations.Strikethrough;
                     break;
                 case "font":
                     ApplyFont(span, _parentNode);
@@ -160,6 +167,5 @@ public class FormattedStringBuilder
             }
         }
     }
-
 }
 
