@@ -66,17 +66,18 @@ public class FormattedStringBuilder
             parentNode = parentNode.ParentNode;
         }
 
+        int subCount = 0;
+        int supCount = 0;
+
         foreach (HtmlNode _parentNode in parentNodes)
         {
             switch (_parentNode.Name.ToLower())
             {
                 case "sub":
-                    span.FontFamily = "MyFontSub";
-                    span.FontSize = 10;
+                    subCount++;
                     break;
                 case "sup":
-                    span.FontFamily = "MyFontSup";
-                    span.FontSize = 10;
+                    supCount++;
                     break;
                 case "b":
                     span.FontAttributes = FontAttributes.Bold;
@@ -91,6 +92,18 @@ public class FormattedStringBuilder
                     ApplyFont(span, _parentNode);
                     break;
             }
+
+            if (subCount > supCount)
+            {
+                span.FontFamily = "MyFontSub";
+                span.FontSize = 10;
+            }
+            else if (supCount > subCount)
+            {
+                span.FontFamily = "MyFontSup";
+                span.FontSize = 10;
+            }
+
             ApplyStyle(span, _parentNode);
         }
 
