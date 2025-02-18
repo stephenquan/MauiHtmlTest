@@ -27,9 +27,11 @@
                 Style="{StaticResource SubHeadline}"
                 Text="Welcome to &#10;.NET Multi-platform App UI" />
 
-            <Label FormattedText="{Binding FormattedString}" />
+            <Label FormattedText="{Binding NumberTest}" />
+            <Label FormattedText="{Binding FormulaTest}" />
 
-            <Label FormattedText="{Binding HtmlText, Converter={local:HtmlFormatConverter}}" />
+            <Label FormattedText="{Binding NumberHtml, Converter={local:HtmlFormatConverter}}" />
+            <Label FormattedText="{Binding FormulaHtml, Converter={local:HtmlFormatConverter}}" />
 
             <Button
                 x:Name="CounterBtn"
