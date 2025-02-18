@@ -93,18 +93,18 @@ public class FormattedStringBuilder
                     break;
             }
 
-            if (subCount > supCount)
-            {
-                span.FontFamily = "MyFontSub";
-                span.FontSize = 10;
-            }
-            else if (supCount > subCount)
-            {
-                span.FontFamily = "MyFontSup";
-                span.FontSize = 10;
-            }
-
             ApplyStyle(span, _parentNode);
+        }
+
+        if (subCount > supCount)
+        {
+            span.FontFamily = "MyFontSub";
+            span.FontSize = 10;
+        }
+        else if (supCount > subCount)
+        {
+            span.FontFamily = "MyFontSup";
+            span.FontSize = 10;
         }
 
         return span;
