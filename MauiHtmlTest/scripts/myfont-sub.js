@@ -24,5 +24,5 @@ module.exports = {
     }
 };
 
-for (let i = 0x20; i <= 0x3f; i++)
+for (let i = 0x20; i <= 0x7e; i++)
     module.exports.codepoints[ `c${i.toString(16)}` ] = i;
