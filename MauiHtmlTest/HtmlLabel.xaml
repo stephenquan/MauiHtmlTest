@@ -3,6 +3,9 @@
     x:Class="MauiHtmlTest.HtmlLabel"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    FontSize="14">
+    xmlns:local="clr-namespace:MauiHtmlTest"
+    FontSize="14"
+    FormattedText="{Binding FormattedString, x:DataType=local:HtmlLabel, Source={RelativeSource Self}}"
+    LinkActivatedCommand="{Binding DefaultLinkActivatedCommand, x:DataType=local:HtmlLabel, Source={RelativeSource Self}}">
     <!--    -->
 </Label>

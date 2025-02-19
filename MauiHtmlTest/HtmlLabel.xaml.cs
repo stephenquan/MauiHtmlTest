@@ -1,3 +1,4 @@
+using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -50,8 +51,6 @@ public partial class HtmlLabel : Label
     {
         InitializeComponent();
 
-        this.SetBinding(Label.FormattedTextProperty, new Binding(nameof(FormattedString), source: this));
-
         PropertyChanged += (s, e) =>
         {
             switch (e.PropertyName)
@@ -79,7 +78,7 @@ public partial class HtmlLabel : Label
     /// </summary>
     /// <param name="link"></param>
     /// <returns></returns>
-    //[RelayCommand]
+    [RelayCommand]
     public async Task DefaultLinkActivated(string link)
     {
         await Task.Delay(50);
