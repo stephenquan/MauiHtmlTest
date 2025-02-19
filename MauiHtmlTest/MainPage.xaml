@@ -27,11 +27,12 @@
                 Style="{StaticResource SubHeadline}"
                 Text="Welcome to &#10;.NET Multi-platform App UI" />
 
-            <Label FormattedText="{Binding NumberTest}" />
+            <Label FontAttributes="Bold" Text="Label.FormattedString test" />
             <Label FormattedText="{Binding FormulaTest}" />
 
-            <local:HtmlLabel Text="{Binding NumberHtml}" />
-            <local:HtmlLabel Text="{Binding FormulaHtml}" />
+            <Label FontAttributes="Bold" Text="HtmlLabel test" />
+            <local:HtmlLabel Text="{Binding DemoHtml}" />
+            <Editor AutoSize="TextChanges" Text="{Binding DemoHtml, Mode=TwoWay}" />
 
             <Button
                 x:Name="CounterBtn"
