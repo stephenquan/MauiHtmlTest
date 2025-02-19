@@ -30,8 +30,8 @@
             <Label FormattedText="{Binding NumberTest}" />
             <Label FormattedText="{Binding FormulaTest}" />
 
-            <Label FormattedText="{Binding NumberHtml, Converter={local:HtmlFormatConverter}}" />
-            <Label FormattedText="{Binding FormulaHtml, Converter={local:HtmlFormatConverter}}" />
+            <local:HtmlLabel Text="{Binding NumberHtml}" />
+            <local:HtmlLabel Text="{Binding FormulaHtml}" />
 
             <Button
                 x:Name="CounterBtn"
