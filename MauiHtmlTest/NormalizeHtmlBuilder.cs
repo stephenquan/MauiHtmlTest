@@ -18,9 +18,11 @@ public class NormalizeHtmlBuilder
 
     /// <summary>
     /// This is a state variable that helps to determine if a newline is needed.
+    /// IsNewLine = -2 means we have completed a paragraph state, but have deferred adding the newlines.
+    /// IsNewLine = -1 means we have completed a newline state, but have deferred adding the newline.
     /// IsNewline = 0 means we are not in a newline state, perhaps in the middle of a sentence.
     /// IsNewLine = 1 means we are in a newline state, typically after a line break tag.
-    /// IsNewLine = 2 means we are in a pargraph state, typically after a paragraph tag.
+    /// IsNewLine = 2 means we are in a paragraph state, typically after a paragraph tag.
     /// </summary>
     private int IsNewline = 2;
 
@@ -45,38 +47,43 @@ public class NormalizeHtmlBuilder
         {
             case "#text":
                 string text = NoNewlines(node.InnerText);
-                if (IsNewline > 0)
+                if (IsNewline != 0)
                 {
                     text = text.TrimStart();
                 }
                 if (text.Length > 0)
                 {
+                    AddDeferredNewLines();
                     AddTextElement(node, text);
                 }
                 return;
 
             case "pre":
+                AddDeferredNewLines();
                 AddNewLineIfRequired();
                 AddTextElement(node, node.InnerText);
                 return;
 
             case "br":
             case "hr":
-                Elements.Add(new NormalizeHtmlTextElement() { Text = "\n" });
-                IsNewline = 1;
+                AddDeferredNewLines();
+                IsNewline = -1;
                 break;
 
             case "ol":
+                AddDeferredNewLines();
                 AddTwoNewLinesIfRequired();
                 ListIndexes = [0, .. ListIndexes];
                 break;
 
             case "ul":
+                AddDeferredNewLines();
                 AddTwoNewLinesIfRequired();
                 ListIndexes = [-1, .. ListIndexes];
                 break;
 
             case "li":
+                AddDeferredNewLines();
                 AddNewLineIfRequired();
                 StringBuilder bullet = new();
                 if (ListIndexes.Count > 1)
@@ -94,6 +101,7 @@ public class NormalizeHtmlBuilder
             case "h4":
             case "h5":
             case "h6":
+                AddDeferredNewLines();
                 AddTwoNewLinesIfRequired();
                 break;
         }
@@ -114,11 +122,32 @@ public class NormalizeHtmlBuilder
             case "h6":
             case "ol":
             case "ul":
-                AddTwoNewLinesIfRequired();
+                IsNewline = -2;
                 break;
 
             case "pre":
-                AddNewLineIfRequired();
+            case "hr":
+            case "br":
+                IsNewline = -1;
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Add deferred new lines as a result of completing paragraph or heading elements.
+    /// </summary>
+    void AddDeferredNewLines()
+    {
+        switch (IsNewline)
+        {
+            case -2:
+                Elements.Add(new NormalizeHtmlTextElement() { Text = "\n" });
+                Elements.Add(new NormalizeHtmlTextElement() { Text = "\n" });
+                IsNewline = 2;
+                break;
+            case -1:
+                Elements.Add(new NormalizeHtmlTextElement() { Text = "\n" });
+                IsNewline = 1;
                 break;
         }
     }
