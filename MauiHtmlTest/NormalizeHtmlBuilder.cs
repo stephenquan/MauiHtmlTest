@@ -498,6 +498,14 @@ public class NormalizeHtmlBuilder
                 {
                     span.TextDecorations = _textDecorations;
                 }
+                if (span.FontFamily is string spanFontFamily && span.FontAttributes is FontAttributes spanFontAttributes)
+                {
+                    if (FontMap.Apply(ref spanFontFamily, ref spanFontAttributes))
+                    {
+                        span.FontFamily = spanFontFamily;
+                        span.FontAttributes = spanFontAttributes;
+                    }
+                }
                 if (linkActivatedCommand is not null && textElement.Link is string link)
                 {
                     TapGestureRecognizer tapGesture = new();

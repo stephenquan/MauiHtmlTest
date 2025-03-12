@@ -10,18 +10,18 @@ public partial class MainPage : ContentPage
         Spans =
         {
             new Span { Text = "1", FontFamily = "MyFontSup", FontSize = 10, },
-            new Span { Text = "Almost every ", FontSize = 14, },
-            new Span { Text = "developer's", FontSize = 14, FontAttributes = FontAttributes.Bold | FontAttributes.Italic, TextColor = Colors.Red },
-            new Span { Text = " favorite molecule is C", FontSize = 14, },
+            new Span { Text = "Almost every ", FontFamily = "NotoSansRegular", FontSize = 14, },
+            new Span { Text = "developer's", FontFamily = "NotoSansBoldItalic", FontSize = 14, TextColor = Colors.Red },
+            new Span { Text = " favorite molecule is C", FontFamily = "NotoSansRegular", FontSize = 14, },
             new Span { Text = "8", FontFamily = "MyFontSub", FontSize = 10, },
-            new Span { Text = "H", FontSize = 14, },
+            new Span { Text = "H", FontFamily = "NotoSansRegular", FontSize = 14, },
             new Span { Text = "10", FontFamily = "MyFontSub", FontSize = 10, },
-            new Span { Text = "N", FontSize = 14, },
+            new Span { Text = "N", FontFamily = "NotoSansRegular", FontSize = 14, },
             new Span { Text = "4", FontFamily = "MyFontSub", FontSize = 10, },
-            new Span { Text = "O", FontSize = 14, },
+            new Span { Text = "O", FontFamily = "NotoSansRegular", FontSize = 14, },
             new Span { Text = "2", FontFamily = "MyFontSub", FontSize = 10, },
-            new Span { Text = ", also known as ", FontSize = 14 },
-            new Span { Text = "\"caffeine.\"", FontSize = 14, TextColor = Colors.Blue, TextDecorations = TextDecorations.Underline },
+            new Span { Text = ", also known as ", FontFamily = "NotoSansRegular", FontSize = 14 },
+            new Span { Text = "\"caffeine.\"", FontFamily = "NotoSansRegular", FontSize = 14, TextColor = Colors.Blue, TextDecorations = TextDecorations.Underline },
         }
     };
 

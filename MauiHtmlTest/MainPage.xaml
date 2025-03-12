@@ -31,7 +31,7 @@
             <Label FormattedText="{Binding FormulaTest}" />
 
             <Label FontAttributes="Bold" Text="HtmlLabel test" />
-            <local:HtmlLabel Text="{Binding DemoHtml}" />
+            <local:HtmlLabel FontFamily="NotoSansRegular" Text="{Binding DemoHtml}" />
             <Editor AutoSize="TextChanges" Text="{Binding DemoHtml, Mode=TwoWay}" />
 
             <Button
